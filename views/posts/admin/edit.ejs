@@ -2,8 +2,13 @@
 <html>
   <head>
     <% include ../../partials/head %>
+    <script type="text/javascript">
+    function onLoad(){
+      $("#select_div").val("<%= sermon.Sermon_type %>");
+    }
+    </script>
   </head>
-  <body>
+  <body onload="javascript:onLoad();">
     <% include ../../partials/nav %>
 
     <div class="container post post-new">
@@ -25,9 +30,9 @@
             </div>
             <div class="form-group">
               <label for="title" class="col-sm-3 control-label">예배 등록</label>
-              <div class="col-sm-9">
-                <select>
-                   <option value="1">3부 예배</option>
+              <div class="col-sm-9" >
+                <select name="selectpicker" id="select_div">
+                   <option value="1">11시 예배</option>
                    <option value="2">오후 예배</option>
                    <option value="3">수요 예배</option>
                 </select>

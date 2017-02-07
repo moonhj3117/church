@@ -37,8 +37,19 @@ router.post("/", function(req, res){
   sermon_data.Sermonbody = req.body.body;
   sermon_data.file_path = "/storage/abc.mp3";
   sermon_data.Sermon_date = req.body.sermon_date;
-  sermon_data.Sermon_type = "1";
-  sermon_data.Sermon_type_txt = "11시 예배";
+  sermon_data.Sermon_type = req.body.selectpicker;
+  switch (req.body.selectpicker) {
+    case "1":
+        sermon_data.Sermon_type_txt = "11시 예배";
+      break;
+    case "2":
+        sermon_data.Sermon_type_txt = "오후 예배";
+      break;
+      case "3":
+        sermon_data.Sermon_type_txt = "수요 예배";
+      break;
+  }
+
   Sermon.create(sermon_data, function(err, sermon){
     if(err) return res.json(err);
     res.redirect('/posts');
@@ -69,9 +80,18 @@ router.put("/:id", function(req, res){
   sermon_data.Sermonbody = req.body.body;
   sermon_data.file_path = "/storage/abc.mp3";
   sermon_data.Sermon_date = req.body.sermon_date;
-  sermon_data.Sermon_type = "1";
-  sermon_data.Sermon_type_txt = "11시 예배";
-
+  sermon_data.Sermon_type = req.body.selectpicker;
+  switch (req.body.selectpicker) {
+    case "1":
+        sermon_data.Sermon_type_txt = "11시 예배";
+      break;
+    case "2":
+        sermon_data.Sermon_type_txt = "오후 예배";
+      break;
+      case "3":
+        sermon_data.Sermon_type_txt = "수요 예배";
+      break;
+  }
   Sermon.findOneAndUpdate({_id:req.params.id}, sermon_data, function(err, sermon){
     if(err) return res.json(err);
     res.redirect("/posts/"+req.params.id);
