@@ -2,6 +2,13 @@
 <html>
   <head>
     <% include ../partials/head %>
+    <script type="text/javascript">
+      window.onload = function(){
+        $(document).ready(function(){
+            var clipboard = new Clipboard('.clipboard');
+        });
+      };
+    </script>
   </head>
   <body>
     <% include ../partials/nav %>
@@ -30,7 +37,9 @@
           <div class="col-sm-8 col-sm-pull-4">
             <div class="post-body">
               <b>설교 본문</b> : <%= sermon.Sermonbody %> <br/>
-              <audio controls="2">
+
+              <button class="clipboard" data-clipboard-text="<%= url %>">★말씀 공유★</button>
+              <audio controls autoplay style="width:100%;">
                 <source src="<%= sermon.file_path %>" type="audio/mpeg">
               </audio>
             </div>

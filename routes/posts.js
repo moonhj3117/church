@@ -2,9 +2,14 @@ var express  = require("express");
 var router   = express.Router();
 var Sermon     = require("../models/Sermon");
 var fs       = require('fs');
+var GoogleURL = require( 'google-url' );
+
+
 var const_sermont_type_text1 = "11시 예배";
 var const_sermont_type_text2 = "오후 예배";
 var const_sermont_type_text3 = "수요 예배";
+var const_domain = "http://localhost:3000/posts/";
+
 
 // Index
 router.get("/", function(req, res){
@@ -32,6 +37,10 @@ router.get("/new", function(req, res){
   res.render("posts/admin/new");
 });
 
+// shorter test
+router.get("/short", function(req, res){
+  res.render("posts/shorter");
+});
 // create
 router.post("/", function(req, res){
   var sermon_data = new Sermon();
@@ -60,9 +69,16 @@ router.post("/", function(req, res){
 
 // show
 router.get("/:id", function(req, res){
+  var short_url = null;
   Sermon.findOne({_id:req.params.id}, function(err, sermon){
     if(err) return res.json(err);
-    res.render("posts/show", {sermon:sermon});
+
+    // google shorter api 이용 대박이네!!!
+    var lognUrl = const_domain + req.params.id;
+    googleUrl = new GoogleURL({key:'AIzaSyDeQw-Y58m5vo1FXzrPdwVPq2RReB7u3Hk'});
+    googleUrl.shorten( lognUrl , function( err, shortUrl ) {
+      res.render("posts/show", {sermon:sermon, url:shortUrl});
+    });
   });
 });
 
