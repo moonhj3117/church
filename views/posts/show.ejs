@@ -30,15 +30,15 @@
           <div class="col-sm-4 col-sm-push-8">
             <div class="post-info">
               <div>
-                <span>DATE</span> : <%= sermon.Sermon_date %>
+                <b>설교 날짜</b> : <%= sermon.Sermon_date %>
+                <br/><br/>
+                <button class="clipboard btn btn-default btn-sm" data-clipboard-text="<%= url %>">★공유★</button>
               </div>
             </div> <!-- post-info end -->
           </div> <!-- col end-->
           <div class="col-sm-8 col-sm-pull-4">
             <div class="post-body">
               <b>설교 본문</b> : <%= sermon.Sermonbody %> <br/>
-
-              <button class="clipboard" data-clipboard-text="<%= url %>">★말씀 공유★</button>
               <audio controls autoplay style="width:100%;">
                 <source src="<%= sermon.file_path %>" type="audio/mpeg">
               </audio>
