@@ -2,7 +2,9 @@ var express  = require("express");
 var router   = express.Router();
 var Sermon     = require("../models/Sermon");
 var fs       = require('fs');
-
+var const_sermont_type_text1 = "11시 예배";
+var const_sermont_type_text2 = "오후 예배";
+var const_sermont_type_text3 = "수요 예배";
 
 // Index
 router.get("/", function(req, res){
@@ -35,18 +37,18 @@ router.post("/", function(req, res){
   var sermon_data = new Sermon();
   sermon_data.Sermontitle = req.body.title;
   sermon_data.Sermonbody = req.body.body;
-  sermon_data.file_path = "/storage/abc.mp3";
+  sermon_data.file_path = req.body.file_path;
   sermon_data.Sermon_date = req.body.sermon_date;
   sermon_data.Sermon_type = req.body.selectpicker;
   switch (req.body.selectpicker) {
     case "1":
-        sermon_data.Sermon_type_txt = "11시 예배";
+        sermon_data.Sermon_type_txt = const_sermont_type_text1;
       break;
     case "2":
-        sermon_data.Sermon_type_txt = "오후 예배";
+        sermon_data.Sermon_type_txt = const_sermont_type_text2;
       break;
       case "3":
-        sermon_data.Sermon_type_txt = "수요 예배";
+        sermon_data.Sermon_type_txt = const_sermont_type_text3;
       break;
   }
 
@@ -78,18 +80,18 @@ router.put("/:id", function(req, res){
   sermon_data._id = req.params.id;
   sermon_data.Sermontitle = req.body.title;
   sermon_data.Sermonbody = req.body.body;
-  sermon_data.file_path = "/storage/abc.mp3";
+  sermon_data.file_path = req.body.file_path;
   sermon_data.Sermon_date = req.body.sermon_date;
   sermon_data.Sermon_type = req.body.selectpicker;
   switch (req.body.selectpicker) {
     case "1":
-        sermon_data.Sermon_type_txt = "11시 예배";
+        sermon_data.Sermon_type_txt = const_sermont_type_text1;
       break;
     case "2":
-        sermon_data.Sermon_type_txt = "오후 예배";
+        sermon_data.Sermon_type_txt = const_sermont_type_text2;
       break;
       case "3":
-        sermon_data.Sermon_type_txt = "수요 예배";
+        sermon_data.Sermon_type_txt = const_sermont_type_text3;
       break;
   }
   Sermon.findOneAndUpdate({_id:req.params.id}, sermon_data, function(err, sermon){

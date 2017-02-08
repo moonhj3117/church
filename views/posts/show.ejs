@@ -29,7 +29,10 @@
           </div> <!-- col end-->
           <div class="col-sm-8 col-sm-pull-4">
             <div class="post-body">
-              <%= sermon.Sermonbody %>
+              <b>설교 본문</b> : <%= sermon.Sermonbody %> <br/>
+              <audio controls="2">
+                <source src="<%= sermon.file_path %>" type="audio/mpeg">
+              </audio>
             </div>
           </div> <!-- col end-->
         </div> <!-- row end -->
