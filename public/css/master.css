@@ -71,10 +71,17 @@ form .form-group{
   color: darkseagreen;
 }
 
+.home-welcome{
+  font-family: 'Nanum Pen Script', serif;
+}
 /* post style */
 .post {
   max-width: 670px;
+  /*  font 수정하기 위해서 임시로 주석 처리
   font-family: 'Open Sans', sans-serif;
+  font-family: 'Jeju Gothic', serif;
+  */
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 12px;
 }
 .post h2 {
@@ -142,11 +149,41 @@ form .form-group{
 }
 
 footer{
-   text-align:center;
-   width:100%;
-   height:60px;
-   position:absolute;
-   bottom:0;
-   left:0;
-   background:#f8f8f8;
+  text-align:center;
+  width:100%;
+  height:70px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  background:#f8f8f8;
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 20px;
+}
+.header_board {
+  /*  font 수정하기 위해서 임시로 주석 처리
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Jeju Gothic', serif;
+  */
+
+  font-family: 'Jeju Gothic', serif;
+  font-size: 10px;
+}
+.nav_header_up_fonts {
+  /*  font 수정하기 위해서 임시로 주석 처리
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Jeju Gothic', serif;
+  */
+
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 25px;
+}
+.nav_header_down_fonts {
+  /*  font 수정하기 위해서 임시로 주석 처리
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Jeju Gothic', serif;
+  font-family: 'Noto Sans KR', sans-serif;
+  */
+
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 20px;
 }
