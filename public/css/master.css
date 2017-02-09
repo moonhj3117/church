@@ -140,3 +140,8 @@ form .form-group{
 .post-edit{
   max-width: 520px;
 }
+
+footer{
+   text-align:center;
+   padding: 20px 0;
+}
