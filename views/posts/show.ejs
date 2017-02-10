@@ -25,7 +25,7 @@
         $("#txtCopyClip").hide();
       } else {
         $("#btnCopyClip").hide();
-        $("#txtCopyClip").show();
+        $("#btnCopyClip_hidden").show();
       }
       var clipboard = new Clipboard('#btnCopyClip');
       clipboard.on('success', function(e) {
