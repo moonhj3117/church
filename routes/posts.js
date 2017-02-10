@@ -38,8 +38,8 @@ router.get("/new", function(req, res){
 });
 
 // shorter test
-router.get("/short", function(req, res){
-  res.render("posts/shorter");
+router.get("/clip", function(req, res){
+  res.render("posts/clipboardtest");
 });
 // create
 router.post("/", function(req, res){
