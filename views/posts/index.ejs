@@ -6,43 +6,44 @@
   </head>
   <body>
     <% include ../partials/nav %>
+    <div class="wrap">
+      <div class="container post post-index">
+        <% include partials/header %>
 
-    <div class="container post post-index">
-      <% include partials/header %>
+        <div class="buttons">
+          <a class="btn btn-default" href="/posts/new">New</a>
+        </div>
 
-      <div class="buttons">
-        <a class="btn btn-default" href="/posts/new">New</a>
-      </div>
-
-      <table class="table table-striped posts">
-        <thead>
-          <tr>
-            <th class="title">설교제목</th>
-            <th class="date">예배날짜</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if(sermons == null || sermons.length == 0){ %>
+        <table class="table table-striped posts">
+          <thead>
             <tr>
-              <td class="noData" colspan=100> There is no data to show :( </td>
+              <th class="title">설교제목</th>
+              <th class="date">예배날짜</th>
             </tr>
-          <% } %>
-          <% sermons.forEach(function(sermon) { %>
-            <tr>
-              <td class="title">
-                <a href="/posts/<%= sermon._id %>"><div>제목 : <%= sermon.Sermontitle %><br/>설교본문 : <%=sermon.Sermonbody %></div></a>
-              </td>
-              <td class="date">
-                <%= sermon.Sermon_date %>
-              </td>
-            </tr>
-          <% }) %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% if(sermons == null || sermons.length == 0){ %>
+              <tr>
+                <td class="noData" colspan=100> 등록된 글이 없습니다.~ </td>
+              </tr>
+            <% } %>
+            <% sermons.forEach(function(sermon) { %>
+              <tr>
+                <td class="title">
+                  <a href="/posts/<%= sermon._id %>"><div>제목 : <%= sermon.Sermontitle %><br/>설교본문 : <%=sermon.Sermonbody %></div></a>
+                </td>
+                <td class="date">
+                  <%= sermon.Sermon_date %>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
 
-    </div>  <!-- container end -->
-    <footer>
-      <% include ../partials/footer %>
-    </footer>
+      </div>  <!-- container end -->
+      <footer>
+        <% include ../partials/footer %>
+      </footer>
+    </div>
   </body>
 </html>
