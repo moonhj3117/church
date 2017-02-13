@@ -154,7 +154,13 @@ form .form-group{
   max-width: 520px;
 }
 
-
+.pagination_2{
+  text-align: center;
+}
+.pagination_2 li{
+  display: inline-block;
+  margin-bottom: 20px;
+}
 wrap {
   /*
   for full width
@@ -179,6 +185,8 @@ footer{
   font-size: 20px;
   margin-bottom: 0px;
   padding-bottom: 0px;
+  margin-top: 35px;
+  padding-top: 35px;
 }
 
 .header_board {

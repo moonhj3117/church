@@ -1,3 +1,31 @@
-<%= for(var a = 0; a < 10; a++) { %>
-
-<%=}%>
+<!DOCTYPE html>
+<% include ../partials/head %>
+<script type="text/javascript">
+  var static_list_value = 20;
+  var view_list_id_value = 0;
+  function functionMore(){
+    for(var i = view_list_id_value; i < view_list_id_value + 10; i++){
+      if(i > static_list_value){
+        alert("더이상 게시물이 없습니다.");
+        return;
+      }
+      $("#int_"+i.toString()).show();
+    }
+    view_list_id_value = view_list_id_value + 10;
+  }
+</script>
+<input id="btn_more" type="button" value="더보기" onclick="functionMore()" /><br/>
+<table style="border:1px;">
+<% for (var i = 0; i < 100; i++) { %>
+  <% if(i < 10) { %>
+    <tr>
+      <input id="int_<%=i%>" type="text" value="value : <%= i %>" />
+    </tr>
+    <script>
+      view_list_id_value++;
+    </script>
+  <% } else {%>
+      <input id="int_<%=i%>" type="text" value="value : <%= i %>" style="display:none;" >
+    <% } %>
+<% } %>
+</table>

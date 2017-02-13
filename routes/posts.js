@@ -9,25 +9,37 @@ var const_sermont_type_text1 = "11시 예배";
 var const_sermont_type_text2 = "오후 예배";
 var const_sermont_type_text3 = "수요 예배";
 var const_domain = "http://localhost:3000/posts/";
-
+var limit = 10;              // 설교 리스트 한페이지 최대 갯수
 
 // Index
 router.get("/", function(req, res){
-  Sermon.find({Sermon_type:"1"})    // 11시 예배가 첫 화면으로 고정되어 있기에 type 을 1 던져서 데이터를 갖고 온다
-  .sort("-Sermon_date")
-  .exec(function(err, Sermons){
-    if(err) return res.json(err);
-    res.render("posts/index", {sermons:Sermons, id:1});
+  var page = Math.max(1,req.query.page);
+  Sermon.count({Sermon_type:"1"},function(err,count){
+    if(err) return res.json({success:false, message:err});
+    var skip = (page-1)*limit;
+    var maxPage = Math.ceil(count/limit);
+    Sermon.find({Sermon_type:"1"})    // 11시 예배가 첫 화면으로 고정되어 있기에 type 을 1 던져서 데이터를 갖고 온다
+    .sort("-Sermon_date").skip(skip).limit(limit)
+    .exec(function(err, Sermons){
+      if(err) return res.json(err);
+      res.render("posts/index", {sermons:Sermons, page:page, maxPage:maxPage, id:1});
+    });
   });
 });
 
 // Index
 router.get("/index/:id", function(req, res){
-  Sermon.find({Sermon_type:req.params.id})
-  .sort("-Sermon_date")
-  .exec(function(err, Sermons){
-    if(err) return res.json(err);
-    res.render("posts/index", {sermons:Sermons, id:req.params.id});
+  var page = Math.max(1,req.query.page);
+  Sermon.count({Sermon_type:req.params.id},function(err,count){
+    if(err) return res.json({success:false, message:err});
+    var skip = (page-1)*limit;
+    var maxPage = Math.ceil(count/limit);
+    Sermon.find({Sermon_type:req.params.id})    // 11시 예배가 첫 화면으로 고정되어 있기에 type 을 1 던져서 데이터를 갖고 온다
+    .sort("-Sermon_date").skip(skip).limit(limit)
+    .exec(function(err, Sermons){
+      if(err) return res.json(err);
+      res.render("posts/index", {sermons:Sermons, page:page, maxPage:maxPage, id:req.params.id});
+    });
   });
 });
 
