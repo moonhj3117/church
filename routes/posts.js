@@ -8,7 +8,6 @@ var GoogleURL = require( 'google-url' );
 var const_sermont_type_text1 = "11시 예배";
 var const_sermont_type_text2 = "오후 예배";
 var const_sermont_type_text3 = "수요 예배";
-//var const_domain = "http://localhost:3000/posts/";
 var const_domain = process.env.DOMAIN;
 var limit = 10;              // 설교 리스트 한페이지 최대 갯수
 
@@ -88,7 +87,7 @@ router.get("/:id", function(req, res){
 
     // google shorter api 이용 대박이네!!!
     var lognUrl = const_domain + req.params.id;
-    googleUrl = new GoogleURL({key:'AIzaSyDeQw-Y58m5vo1FXzrPdwVPq2RReB7u3Hk'});
+    googleUrl = new GoogleURL({key:process.env.GOOGLEAPI});
     googleUrl.shorten( lognUrl , function( err, shortUrl ) {
       res.render("posts/show", {sermon:sermon, url:shortUrl});
     });

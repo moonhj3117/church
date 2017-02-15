@@ -27,5 +27,5 @@ app.use("/posts", require("./routes/posts"));
 
 // Port setting
 app.listen(3000, function(){
-  console.log("server on!");
+  console.log("server on! port 3000");
 });
