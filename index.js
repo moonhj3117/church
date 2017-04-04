@@ -22,8 +22,13 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 
 // Routes
+// home
 app.use("/", require("./routes/home"));
+//설교 말씀
 app.use("/posts", require("./routes/posts"));
+//사진
+app.use("/gallery", require("./routes/gallery"));
+
 
 // Port setting
 app.listen(3000, function(){

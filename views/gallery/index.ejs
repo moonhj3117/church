@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/head %>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script type="text/javascript">
+      $('.grid').isotope({
+        // options
+        itemSelector: '.grid-item',
+        layoutMode: 'fitRows'
+      });
+      var view_idx = 0;
+      var elem = document.querySelector('.grid');
+      var iso = new Isotope( elem, {
+        // options
+        itemSelector: '.grid-item',
+        layoutMode: 'fitRows'
+      });
+
+      // element argument can be a selector string
+      //   for an individual element
+      var iso = new Isotope( '.grid', {
+        // options
+      });
+    </script>
+    <style>
+      .grid-item { width: 25%; }
+      .grid-item--width2 { width: 50%; }
+    </style>
+  </head>
+  <body>
+    <% include ../partials/nav %>
+    <div class="wrap">
+      <div class="grid">
+        <div class="grid-item">ABCDFSDFASFASFADFDSFDF</div>
+        <div class="grid-item grid-item--width2">hahasdfashawdfasdfadfasdf</div>
+        <div class="grid-item">hasdhwdfasdfasdfasdfsdf</div>
+        ...
+      </div>
+      <footer>
+        <% include ../partials/footer %>
+      </footer>
+    </div>
+  </body>
+</html>
