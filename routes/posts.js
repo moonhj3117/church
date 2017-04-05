@@ -9,7 +9,7 @@ var const_sermont_type_text1 = "11시 예배";
 var const_sermont_type_text2 = "오후 예배";
 var const_sermont_type_text3 = "수요 예배";
 var const_domain = process.env.DOMAIN;
-var limit = 10;              // 설교 리스트 한페이지 최대 갯수
+var limit = 8;              // 설교 리스트 한페이지 최대 갯수
 
 // Index
 router.get("/", function(req, res){
