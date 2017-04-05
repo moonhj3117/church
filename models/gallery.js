@@ -4,8 +4,9 @@ var mongoose = require("mongoose");
 var GallerySchema = mongoose.Schema({
   gallery_title:{type:String, required:true},                 // gallery 제목
   gallery_file_path:{type:String},                            // gallery 파일명(등록명)
-  gallery_thumail:{type:String},                              // gallery 게시 내용
+  gallery_thumnail:{type:String},                              // gallery 게시 내용
   gallery_view_count:{type:String},                              // gallery View Count
+  gallery_event_date:{type:Date, default:Date.now},           // gallery 촬영 날짜
   gallery_reg_date:{type:Date, default:Date.now},             // gallery 등록일
   gallery_delete_yn:{type:String},                            // gallery 삭제 여부  Y/N
   gallery_delete_date:{type:Date, default:'9999-12-31'}           // gallery 삭제 일짜, default 9999-12-31
