@@ -4,10 +4,11 @@ body {
 a:-webkit-any-link {
     text-decoration: none;	/* ignoring default link settings */
 }
-ul
+.gallery_ul
 {
   list-style-type: none;	/* hiding the bullets from ul */
   text-align:center;
+  padding-left: 0px;
 }
 .fade {
    opacity: 0.8;		/* sets default view to a 80% opacity */
