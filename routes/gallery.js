@@ -8,7 +8,7 @@ router.get('/', function(req, res){
   res.render("gallery/Gallery_main");
 });
 
-// New
+// New 
 router.get("/new", function(req, res){
   res.render("gallery/admin/new");
 });
@@ -17,6 +17,6 @@ router.get("/new", function(req, res){
 router.post("/", function(req, res){
   res.render("gallery/Gallery_main");
   console.log("Gallery Creation Success");
-});
-
+}); 
+     
 module.exports = router;

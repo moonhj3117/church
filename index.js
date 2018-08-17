@@ -4,8 +4,10 @@ var bodyParser     = require("body-parser");
 var methodOverride = require("method-override");
 var app = express();
 
+
 // DB setting
-mongoose.connect(process.env.MONGO_DB);
+//mongoose.connect(process.env.MONGO_DB);
+mongoose.connect("mongodb://127.0.0.1:27017/church");
 var db = mongoose.connection;
 db.once("open", function(){
   console.log("DB connected");
@@ -13,7 +15,6 @@ db.once("open", function(){
 db.on("error", function(err){
   console.log("DB ERROR : ", err);
 });
-
 // Other settings
 app.set("view engine", "ejs");
 app.use(express.static(__dirname+"/public"));
